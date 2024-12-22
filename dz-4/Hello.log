@@ -1,0 +1,24 @@
+host: LAPTOP-DRG6QRID
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 8
+Rules claiming more threads will be scaled down.
+Job stats:
+job      count
+-----  -------
+test         1
+total        1
+
+Select jobs to execute...
+Execute 1 jobs...
+
+[Sun Dec 22 12:34:29 2024]
+localrule test:
+    jobid: 0
+    reason: Rules with neither input nor output files are always executed.
+    resources: tmpdir=/tmp
+
+[Sun Dec 22 12:34:29 2024]
+Finished job 0.
+1 of 1 steps (100%) done
+Complete log: .snakemake/log/2024-12-22T123429.328497.snakemake.log

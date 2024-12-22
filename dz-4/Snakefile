@@ -1,0 +1,47 @@
+rule all:
+    input:
+        "mapping_quality_report.txt"
+
+rule index_reference:
+    input:
+        "GCF_000005845.2_ASM584v2_genomic.fna"
+    output:
+        "GCF_000005845.2_ASM584v2_genomic.fna.bwt"
+    shell:
+        "bwa index {input}"
+
+rule map_reads:
+    input:
+        ref="GCF_000005845.2_ASM584v2_genomic.fna",
+        reads1="SRR31782600_1.fastq",
+        reads2="SRR31782600_2.fastq"
+    output:
+        "aligned_reads.sam"
+    shell:
+        "bwa mem {input.ref} {input.reads1} {input.reads2} > {output}"
+
+rule sam_to_bam:
+    input:
+        "aligned_reads.sam"
+    output:
+        "aligned_reads.bam"
+    shell:
+        "samtools view -bS {input} > {output}"
+
+rule sort_bam:
+    input:
+        "aligned_reads.bam"
+    output:
+        "aligned_reads_sorted.bam"
+    shell:
+        "samtools sort {input} -o {output}"
+
+rule flagstat:
+    input:
+        "aligned_reads_sorted.bam"
+    output:
+        "mapping_quality_report.txt"
+    shell:
+        "samtools flagstat {input} > {output}"
+      
+
