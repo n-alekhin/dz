@@ -45,8 +45,12 @@ Complete log: .snakemake/log/2024-12-22T123429.328497.snakemake.log
 
 лог в Hello.log
 10) Snakefile
+
 11) mapping_quality_report.txt
+
 12) 2024-12-22T125957.696038.snakemake.log
+
 13) pipeline.png
+
 14) использовал команду snakemake --dag | dot -Tpng > pipeline.png
 формируется граф на основе правил. узел правило, стрлка это зависимость 
